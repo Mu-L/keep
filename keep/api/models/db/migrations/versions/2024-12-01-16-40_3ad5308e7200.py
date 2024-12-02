@@ -7,10 +7,7 @@ Create Date: 2024-12-01 16:40:12.655642
 """
 
 import sqlalchemy as sa
-import sqlalchemy_utils
-import sqlmodel
 from alembic import op
-from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
 revision = "3ad5308e7200"
@@ -59,7 +56,10 @@ def downgrade() -> None:
             existing_nullable=True,
         )
         batch_op.alter_column(
-            "settings", existing_type=sa.JSON(), type_=sa.VARCHAR(length=255), nullable=False
+            "settings",
+            existing_type=sa.JSON(),
+            type_=sa.VARCHAR(length=255),
+            nullable=False,
         )
 
     # ### end Alembic commands ###
